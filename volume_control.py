@@ -29,7 +29,7 @@ vol = 0
 vol_bar = 400
 vol_per = 0
 while True:
-    ret,img = cap.read()
+    ret,img = cap.read()        
     img = detector.findHands(img)
     lmlist = detector.findPosition(img,draw = False)
     if len(lmlist) != 0:
@@ -45,7 +45,7 @@ while True:
         
         length = math.hypot(x2-x1,y2-y1)
 
-        vol = np.interp(length,[45,200],[minVol,maxVol])
+        vol = np.interp(length,[50,220],[minVol,maxVol])
         vol_bar = np.interp(length,[45,200],[400,150])
         vol_per = np.interp(length,[45,200],[0,100])
         volume.SetMasterVolumeLevel(vol, None)
